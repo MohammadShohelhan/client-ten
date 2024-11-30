@@ -54,13 +54,17 @@ const Header = () => {
       </div>
       <div className="py-4 flex items-center gap-2 ">
         <img className="w-12 h-12" src={Logo} alt="" />
-        <h2 className="text-2xl font-medium text-white">Espresso Emporium</h2>
+        <h2 className="text-2xl font-medium text-white">Espresso Emporiumsadasd</h2>
       </div>
       <div>
         {value ? (
+          <div className="space-x-2">
           <button onClick={handleLogOut} className="btn btn-warning">
             LogOut
           </button>
+            <Link to="/allusers">
+            <button className="btn btn-warning">user</button>
+          </Link></div>
         ) : (
           <div className="flex gap-5">
             <Link to="/login">

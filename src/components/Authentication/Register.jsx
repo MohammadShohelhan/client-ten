@@ -9,12 +9,13 @@ const Register = () => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
+    const name = form.name.value;
+    const gender = form.gender.value;
     const password = form.password.value;
     console.log(email, password);
     regesterUser(email, password).then((res) => {
-      const registerInfo = { email, password };
       console.log("crate a accout", res);
-
+      const registerInfo = { email, password, name,gender };
       fetch("http://localhost:4000/users", {
         method: "POST",
         headers: {
@@ -56,6 +57,19 @@ const Register = () => {
             required
           />
         </div>
+        <div className="mb-4">
+          <label htmlFor="gender" className="block text-sm font-medium mb-1">
+            Gender
+          </label>
+          <select
+            id="gender"
+            name="gender"
+            className="w-full px-3 py-2 border rounded">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>
@@ -81,6 +95,7 @@ const Register = () => {
 
           {Error && <p className="text-red-500">{Error?.message}</p>}
         </div>
+
         <div className="form-control mt-6">
           <button className="btn btn-primary">Register</button>
         </div>

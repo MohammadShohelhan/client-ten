@@ -17,19 +17,20 @@ const AuthProvider = ({ children }) => {
   const [value, setValue] = useState(null);
   const [loader, setLoader] = useState(true);
   const [email, setEmail] = useState("");
-  const [userImage,setUserImage]=useState(null)
+  const [userImage,setUserImage]=useState(null);
+  const [idForEdit,setIdForEdit] = useState(null)
 
   const provider = new GoogleAuthProvider();
 
   // Google Login
   const googleLogin = () => {
-    setLoader(true)
+  
     return signInWithPopup(auth, provider);
   };
 
   // Register
   const regesterUser = (email, password) => {
-    setLoader(true)
+    
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
@@ -79,6 +80,8 @@ const AuthProvider = ({ children }) => {
     email,
     setEmail,
     userImage,
+    idForEdit,
+    setIdForEdit
   };
   return (
     <AuthContext.Provider value={authInfo}>{children} </AuthContext.Provider>

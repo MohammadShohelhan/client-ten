@@ -17,11 +17,12 @@ const Login = () => {
     loginUser(email, password);
     navigate("/");
   };
-  const handleGoogle = () => {
-    googleLogin()
-      .then(() => navigate("/"))
-      .catch((err) => console.log(err));
-  };
+  // const handleGoogle = () => {
+  //   console.log('jhellodksdjfs');
+     
+  //     .then(() => navigate("/"))
+  //     .catch((err) => console.log(err));
+  // };
 
   return (
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto mt-16">
@@ -71,9 +72,9 @@ const Login = () => {
       </form>
 
       <button
-        onClick={handleGoogle}
+        onClick={()=>googleLogin()}
         className="btn py-2 bg-warning text-black hover:text-white">
-        Google
+        Google Login
       </button>
       {/* <button
         onClick={handletwitter}

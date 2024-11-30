@@ -7,6 +7,9 @@ import DetailsPage from "../Pages/DetailsPage";
 import Login from "../components/Authentication/Login";
 import Register from "../components/Authentication/Register";
 import ForgetPassword from "../components/Authentication/ForgetPassword";
+import Users from "../Pages/Users";
+import UserInfoTable from "../components/UserInfoTable";
+import PrivateRoute from "../Provider/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +24,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/coffee",
-        element: <CoffeeInput></CoffeeInput>,
+        element:<PrivateRoute> <CoffeeInput></CoffeeInput></PrivateRoute>,
       },
       {
         path: "/coffees/:id",
@@ -31,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/updatecoffee/:id",
-        element: <UpdateInput></UpdateInput>,
+        element:<PrivateRoute> <UpdateInput></UpdateInput></PrivateRoute>,
         loader: ({ params }) =>
           fetch(`http://localhost:4000/coffees/${params.id}`),
       },
@@ -46,6 +49,17 @@ const router = createBrowserRouter([
       {
         path: "/forgetpass",
         element: <ForgetPassword></ForgetPassword>,
+      },
+      {
+        path: "/allusers",
+        element: <PrivateRoute><Users></Users></PrivateRoute>,
+        loader: () => fetch("http://localhost:4000/allusers"),
+      },
+
+      {
+        path: "/userUpdate",
+        element: <PrivateRoute><UserInfoTable></UserInfoTable></PrivateRoute>,
+        loader: () => fetch("http://localhost:4000/allusers"),
       },
     ],
   },
